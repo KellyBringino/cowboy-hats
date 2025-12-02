@@ -1,6 +1,8 @@
 package net.dontouchat.cowboyhats;
 
 import com.mojang.logging.LogUtils;
+import net.dontouchat.cowboyhats.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,6 +29,8 @@ public class CowboyHatsMod
     {
         IEventBus modEventBus = context.getModEventBus();
 
+        ModItems.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -44,6 +48,9 @@ public class CowboyHatsMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.LEATHERSTRIPS);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
