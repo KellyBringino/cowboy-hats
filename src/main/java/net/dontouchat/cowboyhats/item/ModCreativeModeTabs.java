@@ -18,6 +18,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.cowboy_hat_tab"))
                     .displayItems((pParameters, pOutput) ->{
                         pOutput.accept(ModItems.LEATHERSTRIPS.get());
+                        pOutput.accept(ModItems.CATTLEMAN.get());
                     })
                     .build());
 

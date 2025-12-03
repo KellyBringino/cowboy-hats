@@ -1,6 +1,8 @@
 package net.dontouchat.cowboyhats.item;
 
 import net.dontouchat.cowboyhats.CowboyHatsMod;
+import net.dontouchat.cowboyhats.item.custom.CattlemanArmorItem;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,6 +15,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> LEATHERSTRIPS = ITEMS.register("leatherstrips",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CATTLEMAN = ITEMS.register("cattleman",
+            () -> new CattlemanArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
