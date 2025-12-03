@@ -1,6 +1,7 @@
 package net.dontouchat.cowboyhats;
 
 import com.mojang.logging.LogUtils;
+import net.dontouchat.cowboyhats.block.ModBlocks;
 import net.dontouchat.cowboyhats.item.ModCreativeModeTabs;
 import net.dontouchat.cowboyhats.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -31,6 +32,7 @@ public class CowboyHatsMod
         IEventBus modEventBus = context.getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
 
         // Register the commonSetup method for modloading
