@@ -25,20 +25,7 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
     // Let's add our animation controller
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, 20, state -> {
-            // Apply our generic idle animation.
-            // Whether it plays or not is decided down below.
-            state.setAnimation(DefaultAnimations.IDLE);
-
-            // This is the entity that is currently wearing/holding the item
-            Entity entity = state.getData(DataTickets.ENTITY);
-
-            // We'll just have ArmorStands always animate, so we can return here
-            if (entity instanceof ArmorStand)
-                return PlayState.CONTINUE;
-
-            return PlayState.STOP;
-        }));
+        controllers.add(new AnimationController<>(this, 20, state -> PlayState.STOP));
     }
 
     @Override
