@@ -2,6 +2,7 @@ package net.dontouchat.cowboyhats.item;
 
 import net.dontouchat.cowboyhats.CowboyHatsMod;
 import net.dontouchat.cowboyhats.item.custom.CattlemanArmorItem;
+import net.dontouchat.cowboyhats.item.custom.DerbyArmorItem;
 import net.dontouchat.cowboyhats.item.custom.GamblerArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +23,8 @@ public class ModItems {
             () -> new CattlemanArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> GAMBLER = ITEMS.register("gambler",
             () -> new GamblerArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> DERBY = ITEMS.register("derby",
+            () -> new DerbyArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
