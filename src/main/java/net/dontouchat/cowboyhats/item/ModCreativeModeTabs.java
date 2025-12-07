@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.CATTLEMAN.get());
                         pOutput.accept(ModItems.GAMBLER.get());
                         pOutput.accept(ModItems.DERBY.get());
+                        pOutput.accept(ModItems.OPENCROWN.get());
                         pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
                     })
                     .build());

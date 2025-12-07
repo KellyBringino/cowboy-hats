@@ -4,6 +4,7 @@ import net.dontouchat.cowboyhats.CowboyHatsMod;
 import net.dontouchat.cowboyhats.item.custom.CattlemanArmorItem;
 import net.dontouchat.cowboyhats.item.custom.DerbyArmorItem;
 import net.dontouchat.cowboyhats.item.custom.GamblerArmorItem;
+import net.dontouchat.cowboyhats.item.custom.OpenCrownArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -25,6 +26,8 @@ public class ModItems {
             () -> new GamblerArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> DERBY = ITEMS.register("derby",
             () -> new DerbyArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> OPENCROWN = ITEMS.register("opencrown",
+            () -> new OpenCrownArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
