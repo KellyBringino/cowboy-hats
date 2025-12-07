@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
                     .displayItems((pParameters, pOutput) ->{
                         pOutput.accept(ModItems.LEATHERSTRIPS.get());
                         pOutput.accept(ModItems.CATTLEMAN.get());
+                        pOutput.accept(ModItems.GAMBLER.get());
                         pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
                     })
                     .build());
