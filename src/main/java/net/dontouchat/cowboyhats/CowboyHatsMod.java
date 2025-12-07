@@ -2,8 +2,13 @@ package net.dontouchat.cowboyhats;
 
 import com.mojang.logging.LogUtils;
 import net.dontouchat.cowboyhats.block.ModBlocks;
+import net.dontouchat.cowboyhats.block.entity.ModBlockEntities;
 import net.dontouchat.cowboyhats.item.ModCreativeModeTabs;
 import net.dontouchat.cowboyhats.item.ModItems;
+import net.dontouchat.cowboyhats.recipe.ModRecipes;
+import net.dontouchat.cowboyhats.screen.LeatherworkingScreen;
+import net.dontouchat.cowboyhats.screen.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +39,10 @@ public class CowboyHatsMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModRecipes.register(modEventBus);
+
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -70,6 +79,8 @@ public class CowboyHatsMod
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            MenuScreens.register(ModMenuTypes.LEATHERWORKINGTABLE_MENU.get(), LeatherworkingScreen::new);
+        }
     }
 }

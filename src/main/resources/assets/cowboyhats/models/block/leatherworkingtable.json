@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "cowboyhats:block/leatherworkingtable"
+    "down": "minecraft:block/oak_planks",
+    "east": "cowboyhats:block/leatherworkingtable_side",
+    "north": "cowboyhats:block/leatherworkingtable_front",
+    "particle": "cowboyhats:block/leatherworkingtable_front",
+    "south": "cowboyhats:block/leatherworkingtable_front",
+    "up": "cowboyhats:block/leatherworkingtable_top",
+    "west": "cowboyhats:block/leatherworkingtable_side"
   }
 }
