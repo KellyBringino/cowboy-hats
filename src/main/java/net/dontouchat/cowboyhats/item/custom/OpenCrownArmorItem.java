@@ -1,6 +1,5 @@
 package net.dontouchat.cowboyhats.item.custom;
 
-import net.dontouchat.cowboyhats.entity.armor.DerbyArmorRenderer;
 import net.dontouchat.cowboyhats.entity.armor.OpenCrownArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;

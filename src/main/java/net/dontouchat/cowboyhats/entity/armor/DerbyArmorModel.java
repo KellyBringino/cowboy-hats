@@ -2,7 +2,6 @@ package net.dontouchat.cowboyhats.entity.armor;
 
 import net.dontouchat.cowboyhats.CowboyHatsMod;
 import net.dontouchat.cowboyhats.item.custom.DerbyArmorItem;
-import net.dontouchat.cowboyhats.item.custom.GamblerArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

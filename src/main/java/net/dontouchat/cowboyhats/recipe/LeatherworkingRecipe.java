@@ -1,12 +1,9 @@
 package net.dontouchat.cowboyhats.recipe;
 
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.dontouchat.cowboyhats.CowboyHatsMod;
-import net.minecraft.client.player.Input;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;

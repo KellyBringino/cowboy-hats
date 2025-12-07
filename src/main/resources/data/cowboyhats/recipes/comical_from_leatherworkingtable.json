@@ -1,0 +1,15 @@
+{
+  "type": "cowboyhats:leatherworking",
+  "input": {
+    "count": 9,
+    "item": "minecraft:leather"
+  },
+  "extra": {
+    "count": 4,
+    "item": "cowboyhats:leatherstrips"
+  },
+  "output": {
+    "count": 1,
+    "item": "cowboyhats:comical"
+  }
+}

@@ -1,6 +1,7 @@
 package net.dontouchat.cowboyhats.item.custom;
 
-import net.dontouchat.cowboyhats.entity.armor.DerbyArmorRenderer;
+import net.dontouchat.cowboyhats.entity.armor.CattlemanArmorRenderer;
+import net.dontouchat.cowboyhats.entity.armor.ComicalArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,8 +13,8 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 import java.util.function.Consumer;
 
-public class DerbyArmorItem extends CowboyHatItem {
-    public DerbyArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
+public class ComicalArmorItem extends CowboyHatItem {
+    public ComicalArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
         super(pMaterial,slot,pProperties);
     }
 
@@ -26,7 +27,7 @@ public class DerbyArmorItem extends CowboyHatItem {
             @Override
             public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
                 if (this.renderer == null)
-                    this.renderer = new DerbyArmorRenderer();
+                    this.renderer = new ComicalArmorRenderer();
 
                 // This prepares our GeoArmorRenderer for the current render frame.
                 // These parameters may be null however, so we don't do anything further with them

@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.MobBucketItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,12 +18,13 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.LEATHERSTRIPS.get()))
                     .title(Component.translatable("creativetab.cowboy_hat_tab"))
                     .displayItems((pParameters, pOutput) ->{
+                        pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
                         pOutput.accept(ModItems.LEATHERSTRIPS.get());
                         pOutput.accept(ModItems.CATTLEMAN.get());
                         pOutput.accept(ModItems.GAMBLER.get());
                         pOutput.accept(ModItems.DERBY.get());
                         pOutput.accept(ModItems.OPENCROWN.get());
-                        pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
+                        pOutput.accept(ModItems.COMICAL.get());
                     })
                     .build());
 

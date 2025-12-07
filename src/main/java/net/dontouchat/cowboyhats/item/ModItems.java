@@ -1,13 +1,9 @@
 package net.dontouchat.cowboyhats.item;
 
 import net.dontouchat.cowboyhats.CowboyHatsMod;
-import net.dontouchat.cowboyhats.item.custom.CattlemanArmorItem;
-import net.dontouchat.cowboyhats.item.custom.DerbyArmorItem;
-import net.dontouchat.cowboyhats.item.custom.GamblerArmorItem;
-import net.dontouchat.cowboyhats.item.custom.OpenCrownArmorItem;
+import net.dontouchat.cowboyhats.item.custom.*;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,6 +24,8 @@ public class ModItems {
             () -> new DerbyArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> OPENCROWN = ITEMS.register("opencrown",
             () -> new OpenCrownArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> COMICAL = ITEMS.register("comical",
+            () -> new ComicalArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
