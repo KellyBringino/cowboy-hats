@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 public class ComicalArmorItem extends CowboyHatItem {
     public ComicalArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties);
+        super(pMaterial,slot,pProperties,1);
     }
 
     // Create our armor model/renderer for forge and return it

@@ -14,7 +14,10 @@ import java.util.function.Consumer;
 
 public class DerbyArmorItem extends CowboyHatItem {
     public DerbyArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties);
+        super(pMaterial,slot,pProperties,1);
+    }
+    public DerbyArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
+        super(pMaterial,slot,pProperties,tier);
     }
 
     // Create our armor model/renderer for forge and return it

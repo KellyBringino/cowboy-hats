@@ -4,6 +4,7 @@ package net.dontouchat.cowboyhats.recipe;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.dontouchat.cowboyhats.CowboyHatsMod;
+import net.dontouchat.cowboyhats.item.custom.CowboyHatItem;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;

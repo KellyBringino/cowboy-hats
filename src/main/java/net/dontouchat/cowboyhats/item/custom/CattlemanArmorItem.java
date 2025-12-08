@@ -14,7 +14,10 @@ import java.util.function.Consumer;
 
 public class CattlemanArmorItem extends CowboyHatItem {
     public CattlemanArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties);
+        this(pMaterial,slot,pProperties,1);
+    }
+    public CattlemanArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
+        super(pMaterial,slot,pProperties,tier);
     }
 
     // Create our armor model/renderer for forge and return it

@@ -10,8 +10,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    COWBOY("cowboy", 10, new int[]{ 0, 0, 0, 0 }, 15,
-            SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(ModItems.LEATHERSTRIPS.get()));
+    COWBOY("cowboy",10,new int[]{ 0, 0, 0, 0 },15,
+            SoundEvents.ARMOR_EQUIP_LEATHER,0f,0.0f,
+            () -> Ingredient.of(ModItems.LEATHERSTRIPS.get()));
 
     private final String name;
     private final int durabilityMultiplier;
