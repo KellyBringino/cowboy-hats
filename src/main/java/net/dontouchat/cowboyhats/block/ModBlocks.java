@@ -1,6 +1,7 @@
 package net.dontouchat.cowboyhats.block;
 
 import net.dontouchat.cowboyhats.CowboyHatsMod;
+import net.dontouchat.cowboyhats.block.custom.InfusionTableBlock;
 import net.dontouchat.cowboyhats.block.custom.LeatherWorkingTableBlock;
 import net.dontouchat.cowboyhats.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -21,6 +22,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LEATHER_WORKING_TABLE = registerBlock("leatherworkingtable",
             () -> new LeatherWorkingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> INFUSION_TABLE = registerBlock("infusiontable",
+            () -> new InfusionTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

@@ -16,6 +16,8 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<LeatherworkingTableMenu>> LEATHERWORKINGTABLE_MENU =
             registerMenuType("leatherworking_menu", LeatherworkingTableMenu::new);
+    public static final RegistryObject<MenuType<InfusionMenu>> INFUSIONTABLE_MENU =
+            registerMenuType("infusion_menu", InfusionMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

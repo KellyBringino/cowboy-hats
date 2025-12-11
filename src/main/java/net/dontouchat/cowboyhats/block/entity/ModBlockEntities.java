@@ -17,7 +17,6 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(LeatherworkingTableBlockEntity::new,
                             ModBlocks.LEATHER_WORKING_TABLE.get()).build(null));
 
-
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

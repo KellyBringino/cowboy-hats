@@ -22,6 +22,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> CATTLEMAN = ITEMS.register("cattleman",
             () -> new CattlemanArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDCATTLEMAN = ITEMS.register("armoredcattleman",
+            () -> new CattlemanArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> GAMBLER = ITEMS.register("gambler",
             () -> new GamblerArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> DERBY = ITEMS.register("derby",

@@ -6,10 +6,10 @@ import net.dontouchat.cowboyhats.block.entity.ModBlockEntities;
 import net.dontouchat.cowboyhats.item.ModCreativeModeTabs;
 import net.dontouchat.cowboyhats.item.ModItems;
 import net.dontouchat.cowboyhats.recipe.ModRecipes;
+import net.dontouchat.cowboyhats.screen.InfusionScreen;
 import net.dontouchat.cowboyhats.screen.LeatherworkingScreen;
 import net.dontouchat.cowboyhats.screen.ModMenuTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -63,9 +63,6 @@ public class CowboyHatsMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.LEATHERSTRIPS);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -81,6 +78,7 @@ public class CowboyHatsMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             MenuScreens.register(ModMenuTypes.LEATHERWORKINGTABLE_MENU.get(), LeatherworkingScreen::new);
+            MenuScreens.register(ModMenuTypes.INFUSIONTABLE_MENU.get(), InfusionScreen::new);
         }
     }
 }
