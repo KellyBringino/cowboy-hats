@@ -29,11 +29,6 @@ public class InfusionTableBlock extends Block {
         }
     }
 
-    @Override
-    public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
-    }
-
     public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
         System.out.println("hello");
         return new SimpleMenuProvider((containerID, inventory, player) -> {

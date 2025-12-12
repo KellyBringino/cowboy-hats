@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/sandstone_bottom",
+    "east": "cowboyhats:block/infusiontable_side",
+    "north": "cowboyhats:block/infusiontable_side",
+    "particle": "cowboyhats:block/infusiontable_side",
+    "south": "cowboyhats:block/infusiontable_side",
+    "up": "cowboyhats:block/infusiontable_top",
+    "west": "cowboyhats:block/infusiontable_side"
+  }
+}

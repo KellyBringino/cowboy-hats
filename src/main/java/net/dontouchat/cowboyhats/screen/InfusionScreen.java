@@ -13,11 +13,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
 
 public class InfusionScreen extends AbstractContainerScreen<InfusionMenu> {
-    private final int buttonX = 20;
+    private final int buttonX = 18;
     private final int buttonY = 18;
 
-    private final int buttonPosX = 0;
-    private final int buttonPosY = 0;
+    private final int buttonPosX = 133;
+    private final int buttonPosY = 44;
 
     @SuppressWarnings("removal")
     private static final ResourceLocation TEXTURE =
@@ -30,6 +30,8 @@ public class InfusionScreen extends AbstractContainerScreen<InfusionMenu> {
     @Override
     protected void init() {
         super.init();
+        this.inventoryLabelY = 10000;
+        this.titleLabelY = 10000;
     }
 
     @Override
@@ -41,9 +43,9 @@ public class InfusionScreen extends AbstractContainerScreen<InfusionMenu> {
         int y = (height - imageHeight) / 2;
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-        int l = this.leftPos + 0;
-        int i1 = this.topPos + 0;
-        this.renderButtons(guiGraphics, pMouseX, pMouseY, l, i1);
+        int l = this.leftPos + buttonPosX;
+        int t = this.topPos + buttonPosY;
+        this.renderButtons(guiGraphics, pMouseX, pMouseY, l, t);
     }
 
     @Override
@@ -76,13 +78,13 @@ public class InfusionScreen extends AbstractContainerScreen<InfusionMenu> {
     }
 
     private void renderButtons(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, int pX, int pY) {
-        int k = pX + buttonX;
-        int i1 = pY + buttonY;
+        int left = pX + buttonX;
+        int top = pY + buttonY;
         int j1 = this.imageHeight + 2;
-        if (pMouseX >= k && pMouseY >= i1 && pMouseX < k + buttonX && pMouseY < i1 + buttonY) {
+        if (pMouseX >= left && pMouseY >= top && pMouseX < left + buttonX && pMouseY < top + buttonY) {
             j1 += buttonY + 1;
         }
 
-        pGuiGraphics.blit(TEXTURE, k, i1, 0, j1, buttonX, buttonY);
+        pGuiGraphics.blit(TEXTURE, left, top, 0, j1, buttonX, buttonY);
     }
 }
