@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> LEATHER_WORKING_TABLE = registerBlock("leatherworkingtable",
             () -> new LeatherWorkingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
     public static final RegistryObject<Block> INFUSION_TABLE = registerBlock("infusiontable",
-            () -> new InfusionTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+            () -> new InfusionTableBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
