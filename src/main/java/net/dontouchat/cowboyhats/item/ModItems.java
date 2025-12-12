@@ -24,12 +24,22 @@ public class ModItems {
             () -> new CattlemanArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> ARMOREDCATTLEMAN = ITEMS.register("armoredcattleman",
             () -> new CattlemanArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+
     public static final RegistryObject<Item> GAMBLER = ITEMS.register("gambler",
             () -> new GamblerArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDGAMBLER = ITEMS.register("armoredgambler",
+            () -> new GamblerArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+
     public static final RegistryObject<Item> DERBY = ITEMS.register("derby",
             () -> new DerbyArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDDERBY = ITEMS.register("armoredderby",
+            () -> new DerbyArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+
     public static final RegistryObject<Item> OPENCROWN = ITEMS.register("opencrown",
             () -> new OpenCrownArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDOPENCROWN = ITEMS.register("armoredopencrown",
+            () -> new OpenCrownArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+
     public static final RegistryObject<Item> COMICAL = ITEMS.register("comical",
             () -> new ComicalArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 

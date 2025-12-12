@@ -1,9 +1,13 @@
 {
   "item.cowboyhats.leatherstrips": "Leather Strips",
   "item.cowboyhats.cattleman": "Cattleman Cowboy Hat",
+  "item.cowboyhats.armoredcattleman": "Cattleman Cowboy Hat",
   "item.cowboyhats.gambler": "Gambler Cowboy Hat",
+  "item.cowboyhats.armoredgambler": "Gambler Cowboy Hat",
   "item.cowboyhats.derby": "Derby Cowboy Hat",
+  "item.cowboyhats.armoredderby": "Derby Cowboy Hat",
   "item.cowboyhats.opencrown": "Open Crown Cowboy Hat",
+  "item.cowboyhats.armoredopencrown": "Open Crown Cowboy Hat",
   "item.cowboyhats.comical": "Comically Large Cowboy Hat",
 
   "block.cowboyhats.leatherworkingtable": "Leatherworking Table",

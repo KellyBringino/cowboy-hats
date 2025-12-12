@@ -1,11 +1,13 @@
 package net.dontouchat.cowboyhats.item.custom;
 
 import net.dontouchat.cowboyhats.entity.armor.GamblerArmorRenderer;
+import net.dontouchat.cowboyhats.item.ModItems;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
@@ -18,6 +20,15 @@ public class GamblerArmorItem extends CowboyHatItem {
     }
     public GamblerArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
         super(pMaterial,slot,pProperties,tier);
+    }
+
+    @Override
+    public ItemLike getArmoredVariant(boolean value) {
+        if(value){
+            return ModItems.ARMOREDGAMBLER.get();
+        }else{
+            return ModItems.GAMBLER.get();
+        }
     }
 
     // Create our armor model/renderer for forge and return it

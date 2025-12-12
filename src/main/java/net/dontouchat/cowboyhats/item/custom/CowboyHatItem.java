@@ -1,28 +1,26 @@
 package net.dontouchat.cowboyhats.item.custom;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.dontouchat.cowboyhats.CowboyHatsMod;
-import net.dontouchat.cowboyhats.item.ModArmorMaterials;
 import net.dontouchat.cowboyhats.item.ModItems;
-import net.minecraft.Util;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
@@ -41,8 +39,8 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
     public enum CowboyEffect{
         LUCKY,
         ARMORED,
-        TOUGH,
-        HEAVY
+        RELAXEDSLEEPER,
+        TOUGHRIDER
     }
     private Map<CowboyEffect,String[]> effectmap = new HashMap();
     private Random random;
@@ -51,26 +49,28 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
         super(pMaterial,slot,pProperties);
         this.effectmap.put(CowboyEffect.LUCKY,new String[]{"lucky","Lucky"});
         this.effectmap.put(CowboyEffect.ARMORED,new String[]{"armored","Armored"});
-        this.effectmap.put(CowboyEffect.TOUGH,new String[]{"tough","Tough"});
-        this.effectmap.put(CowboyEffect.HEAVY,new String[]{"heavy","Heavy"});
+        this.effectmap.put(CowboyEffect.RELAXEDSLEEPER,new String[]{"relaxedsleeper","Relaxed Sleeper"});
+        this.effectmap.put(CowboyEffect.TOUGHRIDER,new String[]{"toughrider","Tough Rider"});
         this.random = new Random(System.currentTimeMillis());
     }
     public  int getTier(ItemStack pStack){return pStack.getTag().getInt("cowboyhats.tier");}
     public boolean tryLuck(ItemStack pStack){
-        return pStack.getTag().getBoolean("cowboyhats." + CowboyEffect.LUCKY)
+        return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.LUCKY)[0])
                 && random.nextFloat() < 0.5f;
+    }
+    public boolean tryWakeupEffect(ItemStack pStack){
+        return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.RELAXEDSLEEPER)[0]);
     }
     public ItemStack upgradeTier(ItemStack pStack){
         int tier =  getTier(pStack) + 1;
         ItemStack outItem = pStack.copy();
-        CompoundTag nbtTier = new CompoundTag();
+        CompoundTag nbtTier = pStack.getTag();
         nbtTier.putInt("cowboyhats.tier",tier);
 
         if(tier > 0)
         {
-            List<CowboyEffect> effects = Arrays.asList(CowboyEffect.values());
+            List<CowboyEffect> effects = new ArrayList(Arrays.asList(CowboyEffect.values()));
             for(CowboyEffect e : effectmap.keySet()){
-
                 if(pStack.getTag().getBoolean("cowboyhats." + effectmap.get(e)[0])){
                     effects.remove(e);
                 }
@@ -79,17 +79,17 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
             CowboyEffect effect = effects.get(random.nextInt(effects.size()));
 
             if(effect == CowboyEffect.ARMORED){
+                ItemStack oItem = new ItemStack(getArmoredVariant(true),1);
+                outItem = oItem;
             }
 
             nbtTier.putBoolean("cowboyhats." + effectmap.get(effect)[0],true);
             outItem.setTag(nbtTier);
-            System.out.println(pStack.getTag());
         }
 
         return outItem;
     }
 
-    // Let's add our animation controller
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, 20,
@@ -116,12 +116,23 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
-//        @Override
-//    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
-//        super.onInventoryTick(stack, level, player, slotIndex, selectedIndex);
-//        if(this.getType() == Type.HELMET && slotIndex == 39){
-//        }
-//    }
+    public ItemLike getArmoredVariant(boolean value){
+        if(value){
+            return ModItems.ARMOREDCATTLEMAN.get();
+        }else{
+            return ModItems.CATTLEMAN.get();
+        }
+    }
+
+        @Override
+    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        super.onInventoryTick(stack, level, player, slotIndex, selectedIndex);
+        if(slotIndex == 39){
+            if(player.isPassenger() && stack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.TOUGHRIDER)[0])){
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,20));
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event){
@@ -135,4 +146,15 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerWakeUp(PlayerWakeUpEvent event){
+        Player player = event.getEntity();
+        ItemStack hat = player.getItemBySlot(EquipmentSlot.HEAD);
+        if (!hat.isEmpty() && hat.getItem() instanceof CowboyHatItem)
+        {
+            if(((CowboyHatItem) hat.getItem()).tryWakeupEffect(hat)){
+                player.addEffect(new MobEffectInstance(MobEffects.SATURATION,20));
+            }
+        }
+    }
 }
