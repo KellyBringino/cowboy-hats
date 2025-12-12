@@ -1,5 +1,6 @@
 {
   "type": "cowboyhats:infusion",
+  "isreroll": false,
   "tier": 0,
   "ingredients": [
     {

@@ -61,6 +61,13 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
     public boolean tryWakeupEffect(ItemStack pStack){
         return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.RELAXEDSLEEPER)[0]);
     }
+    private CompoundTag NBTBase(CompoundTag NBT){
+        NBT.putInt("cowboyhats.tier",0);
+        for(CowboyEffect e : effectmap.keySet()){
+            NBT.putBoolean("cowboyhats." + effectmap.get(e)[0],false);
+        }
+        return NBT;
+    }
     public ItemStack upgradeTier(ItemStack pStack){
         int tier =  getTier(pStack) + 1;
         ItemStack outItem = pStack.copy();
@@ -87,6 +94,19 @@ public class CowboyHatItem extends ArmorItem implements GeoItem {
             outItem.setTag(nbtTier);
         }
 
+        return outItem;
+    }
+
+    public ItemStack rerollEffects(ItemStack pStack){
+        int tier =  getTier(pStack);
+        System.out.println(tier);
+        ItemStack outItem = new ItemStack(getArmoredVariant(false),1);
+        CompoundTag nbtTags = NBTBase(pStack.getTag());
+        outItem.setTag(nbtTags);
+        for(int i = 0; i < tier;i++){
+            System.out.println(outItem.getTag());
+            outItem = upgradeTier(outItem);
+        }
         return outItem;
     }
 

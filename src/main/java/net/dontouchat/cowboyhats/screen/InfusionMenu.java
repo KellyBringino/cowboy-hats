@@ -50,7 +50,8 @@ public class InfusionMenu extends AbstractContainerMenu {
     }
 
     private void craftItem() {
-        if(!hasRecipe()){
+        InfusionRecipe recipe = getCurrentRecipe().get();
+        if(recipe == null){
             return;
         }
         for(int i = 1; i < INFUSION_SLOTS_END;i++){
@@ -62,7 +63,12 @@ public class InfusionMenu extends AbstractContainerMenu {
         }
         ItemStack hat = this.container.getItem(INPUT_SLOT);
 
-        hat = ((CowboyHatItem)hat.getItem()).upgradeTier(hat);
+        if(recipe.getIsReroll())
+        {
+            hat = ((CowboyHatItem)hat.getItem()).rerollEffects(hat);
+        }else{
+            hat = ((CowboyHatItem)hat.getItem()).upgradeTier(hat);
+        }
         this.container.setItem(INPUT_SLOT,hat);
         this.slots.get(INPUT_SLOT).setChanged();
         this.container.setChanged();

@@ -20,11 +20,13 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
     private final int tier;
     private final ResourceLocation id;
+    private final boolean isReroll;
 
-    public InfusionRecipe(NonNullList<Ingredient> inputItems, int tier, ResourceLocation id) {
+    public InfusionRecipe(NonNullList<Ingredient> inputItems, int tier, ResourceLocation id, boolean isReroll) {
         this.inputItems = inputItems;
         this.tier = tier;
         this.id = id;
+        this.isReroll = isReroll;
     }
 
     @Override
@@ -41,6 +43,8 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
 
         return test;
     }
+
+    public boolean getIsReroll(){return isReroll;}
 
     @Override
     public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
@@ -86,14 +90,16 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
         public InfusionRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
             int tier = GsonHelper.getAsInt(pSerializedRecipe, "tier", 1);
 
+            boolean isReroll = GsonHelper.getAsBoolean(pSerializedRecipe,"isreroll",false);
+
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(6, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new InfusionRecipe(inputs, tier, pRecipeId);
+            return new InfusionRecipe(inputs, tier, pRecipeId,isReroll);
         }
 
         @Override
@@ -104,7 +110,8 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
                 inputs.set(i, Ingredient.fromNetwork(pBuffer));
             }
             int tier = pBuffer.readVarInt();
-            return new InfusionRecipe(inputs, tier, pRecipeId);
+            boolean isReroll = pBuffer.readBoolean();
+            return new InfusionRecipe(inputs, tier, pRecipeId,isReroll);
         }
 
         @Override
@@ -115,6 +122,7 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
                 ingredient.toNetwork(pBuffer);
             }
             pBuffer.writeVarInt(pRecipe.tier);
+            pBuffer.writeBoolean(pRecipe.isReroll);
         }
     }
 }
