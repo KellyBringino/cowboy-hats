@@ -13,6 +13,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<LeatherworkingRecipe>> LEATHERWORKINGTABLE_SERIALIZER =
             SERIALIZERS.register("leatherworking", () -> LeatherworkingRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<InfusionRecipe>> INFUSIONTABLE_SERIALIZER =
+            SERIALIZERS.register("infusion", () -> InfusionRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

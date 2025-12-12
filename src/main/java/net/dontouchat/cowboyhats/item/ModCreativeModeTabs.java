@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.cowboy_hat_tab"))
                     .displayItems((pParameters, pOutput) ->{
                         pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
+                        pOutput.accept(ModBlocks.INFUSION_TABLE.get());
                         pOutput.accept(ModItems.LEATHERSTRIPS.get());
                         pOutput.accept(ModItems.CATTLEMAN.get());
                         pOutput.accept(ModItems.GAMBLER.get());
