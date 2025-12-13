@@ -1,0 +1,10 @@
+{
+  "type": "cowboyhats:infusion",
+  "isreroll": false,
+  "tier": 2,
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ]
+}

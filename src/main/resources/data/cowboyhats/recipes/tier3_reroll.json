@@ -1,0 +1,10 @@
+{
+  "type": "cowboyhats:infusion",
+  "isreroll": true,
+  "tier": 2,
+  "ingredients": [
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ]
+}

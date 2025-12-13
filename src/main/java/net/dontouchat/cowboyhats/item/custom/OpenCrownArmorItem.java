@@ -1,11 +1,13 @@
 package net.dontouchat.cowboyhats.item.custom;
 
 import net.dontouchat.cowboyhats.entity.armor.OpenCrownArmorRenderer;
+import net.dontouchat.cowboyhats.item.ModItems;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
@@ -14,7 +16,19 @@ import java.util.function.Consumer;
 
 public class OpenCrownArmorItem extends CowboyHatItem {
     public OpenCrownArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties);
+        super(pMaterial,slot,pProperties,1);
+    }
+    public OpenCrownArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
+        super(pMaterial,slot,pProperties,tier);
+    }
+
+    @Override
+    public ItemLike getArmoredVariant(boolean value) {
+        if(value){
+            return ModItems.ARMOREDOPENCROWN.get();
+        }else{
+            return ModItems.OPENCROWN.get();
+        }
     }
 
     // Create our armor model/renderer for forge and return it
