@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.dontouchat.cowboyhats.CowboyHatsMod;
 import net.dontouchat.cowboyhats.item.custom.CowboyHatItem;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -52,6 +53,14 @@ public class LeatherworkingRecipe implements Recipe<SimpleContainer> {
     @Override
     public boolean canCraftInDimensions(int pWidth, int pHeight) {
         return true;
+    }
+
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> ingredients = NonNullList.withSize(2,Ingredient.EMPTY);
+        ingredients.set(0,Ingredient.of(input));
+        ingredients.set(1,Ingredient.of(extra));
+        return ingredients;
     }
 
     @Override

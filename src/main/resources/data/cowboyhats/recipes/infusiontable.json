@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "G": {
-      "tag": "minecraft:gold_ingot"
+      "item": "minecraft:gold_ingot"
     },
     "L": {
       "item": "minecraft:leather"

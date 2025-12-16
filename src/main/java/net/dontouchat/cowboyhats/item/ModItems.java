@@ -42,6 +42,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> COMICAL = ITEMS.register("comical",
             () -> new ComicalArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDCOMICAL = ITEMS.register("armoredcomical",
+            () -> new ComicalArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);

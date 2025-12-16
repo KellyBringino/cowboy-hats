@@ -32,16 +32,26 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
 
-        boolean test = pContainer.getItem(0).getItem() instanceof CowboyHatItem;
-        test = test && !(pContainer.getItem(0).getItem() instanceof ComicalArmorItem);
-        if(test){test = ((CowboyHatItem) pContainer.getItem(0).getItem()).getTier(pContainer.getItem(0)) == this.tier;}
-        for(int i = 0; i < inputItems.size();i++){
-            if(!inputItems.get(i).test(pContainer.getItem(i+1))){
-                return false;
+        if(!inputItems.get(0).test(pContainer.getItem(0))){
+            return false;
+        }
+        if(((CowboyHatItem) pContainer.getItem(0).getItem()).getTier(pContainer.getItem(0)) != this.tier){
+            return false;
+        }
+        for(int i = 1; i < pContainer.getContainerSize();i++){
+            if(inputItems.size() <= i){
+                if(!pContainer.getItem(i).isEmpty()){
+                    return false;
+                }
+            }
+            else{
+                if(!inputItems.get(i).test(pContainer.getItem(i))){
+                    return false;
+                }
             }
         }
 
-        return test;
+        return true;
     }
 
     public boolean getIsReroll(){return isReroll;}

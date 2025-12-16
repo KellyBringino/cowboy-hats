@@ -50,10 +50,11 @@ public class InfusionMenu extends AbstractContainerMenu {
     }
 
     private void craftItem() {
-        InfusionRecipe recipe = getCurrentRecipe().get();
-        if(recipe == null){
+        Optional oRecipe = getCurrentRecipe();
+        if(oRecipe.isEmpty()){
             return;
         }
+        InfusionRecipe recipe = (InfusionRecipe) oRecipe.get();
         for(int i = 1; i < INFUSION_SLOTS_END;i++){
             this.container.getItem(i).shrink(1);
             if (this.container.getItem(i).isEmpty()) {
