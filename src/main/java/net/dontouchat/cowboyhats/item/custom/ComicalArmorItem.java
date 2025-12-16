@@ -22,7 +22,11 @@ public class ComicalArmorItem extends CowboyHatItem {
 
     @Override
     public ItemLike getArmoredVariant(boolean value) {
-        return ModItems.COMICAL.get();
+        if(value){
+            return ModItems.ARMOREDCOMICAL.get();
+        }else{
+            return ModItems.COMICAL.get();
+        }
     }
 
     // Create our armor model/renderer for forge and return it

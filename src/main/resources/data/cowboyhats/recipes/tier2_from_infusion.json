@@ -4,6 +4,9 @@
   "tier": 0,
   "ingredients": [
     {
+      "tag": "cowboyhats:cowboyhat"
+    },
+    {
       "item": "minecraft:iron_ingot"
     },
     {

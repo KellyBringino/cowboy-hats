@@ -4,6 +4,9 @@
   "tier": 1,
   "ingredients": [
     {
+      "tag": "cowboyhats:cowboyhat"
+    },
+    {
       "item": "minecraft:diamond"
     },
     {
