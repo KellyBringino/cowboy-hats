@@ -14,7 +14,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_LEATHER,0f,0.0f,
             () -> Ingredient.of(ModItems.LEATHERSTRIPS.get())),
     ARMOREDCOWBOY("armoredcowboy",27,new int[]{ 3, 8, 6, 3 },15,
-            SoundEvents.ARMOR_EQUIP_LEATHER,0f,0.0f,
+            SoundEvents.ARMOR_EQUIP_LEATHER,2.0f,0.0f,
             () -> Ingredient.of(ModItems.LEATHERSTRIPS.get())),;
 
 
