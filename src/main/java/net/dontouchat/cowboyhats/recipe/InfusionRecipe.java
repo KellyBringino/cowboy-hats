@@ -3,8 +3,7 @@ package net.dontouchat.cowboyhats.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.dontouchat.cowboyhats.CowboyHatsMod;
-import net.dontouchat.cowboyhats.item.custom.ComicalArmorItem;
-import net.dontouchat.cowboyhats.item.custom.CowboyHatItem;
+import net.dontouchat.cowboyhats.item.custom.CowboyArmorItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -35,7 +34,7 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
         if(!inputItems.get(0).test(pContainer.getItem(0))){
             return false;
         }
-        if(((CowboyHatItem) pContainer.getItem(0).getItem()).getTier(pContainer.getItem(0)) != this.tier){
+        if(((CowboyArmorItem) pContainer.getItem(0).getItem()).getTier(pContainer.getItem(0)) != this.tier){
             return false;
         }
         for(int i = 1; i < pContainer.getContainerSize();i++){

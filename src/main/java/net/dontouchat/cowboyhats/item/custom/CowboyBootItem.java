@@ -56,6 +56,7 @@ public class CowboyBootItem extends CowboyArmorItem {
         }
         return NBT;
     }
+    @Override
     public ItemStack upgradeTier(ItemStack pStack){
         int tier =  getTier(pStack) + 1;
         ItemStack outItem = pStack.copy();
@@ -84,7 +85,7 @@ public class CowboyBootItem extends CowboyArmorItem {
 
         return outItem;
     }
-
+    @Override
     public ItemStack rerollEffects(ItemStack pStack){
         int tier =  getTier(pStack);
         ItemStack outItem = new ItemStack(getArmoredVariant(false),1);
@@ -115,7 +116,7 @@ public class CowboyBootItem extends CowboyArmorItem {
     }
 
     public ItemLike getArmoredVariant(boolean value){
-        return ModItems.CATTLEMAN.get();
+        return ModItems.TRADITIONALBOOTS.get();
     }
 
         @Override

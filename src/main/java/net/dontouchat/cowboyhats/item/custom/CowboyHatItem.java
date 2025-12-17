@@ -94,6 +94,7 @@ public class CowboyHatItem extends CowboyArmorItem {
         }
         return NBT;
     }
+    @Override
     public ItemStack upgradeTier(ItemStack pStack){
         int tier =  getTier(pStack) + 1;
         ItemStack outItem = pStack.copy();
@@ -122,7 +123,7 @@ public class CowboyHatItem extends CowboyArmorItem {
 
         return outItem;
     }
-
+    @Override
     public ItemStack rerollEffects(ItemStack pStack){
         int tier =  getTier(pStack);
         ItemStack outItem = new ItemStack(getArmoredVariant(false),1);

@@ -23,6 +23,9 @@ public class CowboyArmorItem extends ArmorItem implements GeoItem {
                 state -> PlayState.STOP));
     }
 
+    public ItemStack upgradeTier(ItemStack pStack){return pStack;}
+    public ItemStack rerollEffects(ItemStack pStack){return pStack;}
+
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {return this.cache;}
 }
