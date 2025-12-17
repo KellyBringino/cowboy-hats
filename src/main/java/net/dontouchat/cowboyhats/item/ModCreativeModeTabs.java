@@ -26,6 +26,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.DERBY.get());
                         pOutput.accept(ModItems.OPENCROWN.get());
                         pOutput.accept(ModItems.COMICAL.get());
+                        pOutput.accept(ModItems.TRADITIONALBOOTS.get());
                     })
                     .build());
 

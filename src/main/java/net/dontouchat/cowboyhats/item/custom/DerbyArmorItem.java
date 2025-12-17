@@ -16,10 +16,7 @@ import java.util.function.Consumer;
 
 public class DerbyArmorItem extends CowboyHatItem {
     public DerbyArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties,1);
-    }
-    public DerbyArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
-        super(pMaterial,slot,pProperties,tier);
+        super(pMaterial,slot,pProperties);
     }
 
     @Override

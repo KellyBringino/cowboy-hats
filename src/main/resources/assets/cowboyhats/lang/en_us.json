@@ -1,5 +1,6 @@
 {
   "item.cowboyhats.leatherstrips": "Leather Strips",
+
   "item.cowboyhats.cattleman": "Cattleman Cowboy Hat",
   "item.cowboyhats.armoredcattleman": "Cattleman Cowboy Hat",
   "item.cowboyhats.gambler": "Gambler Cowboy Hat",
@@ -9,6 +10,9 @@
   "item.cowboyhats.opencrown": "Open Crown Cowboy Hat",
   "item.cowboyhats.armoredopencrown": "Open Crown Cowboy Hat",
   "item.cowboyhats.comical": "Comically Large Cowboy Hat",
+
+  "item.cowboyhats.traditionalboots": "Traditional Cowboy Boots",
+  "item.cowboyhats.armoredtraditionalboots": "Traditional Cowboy Boots",
 
   "block.cowboyhats.leatherworkingtable": "Leatherworking Table",
   "block.cowboyhats.infusiontable": "Infusion Table",

@@ -18,6 +18,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> COWBOY_HATS = tag("cowboyhat");
+        public static final TagKey<Item> COWBOY_BOOTS = tag("cowboyboot");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(CowboyHatsMod.MODID, name));

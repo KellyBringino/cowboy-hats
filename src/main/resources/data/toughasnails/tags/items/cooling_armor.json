@@ -1,7 +1,7 @@
 {
   "values": [
-    "cowboyhats:armoredcattleman",
     "cowboyhats:cattleman",
+    "cowboyhats:armoredcattleman",
     "cowboyhats:gambler",
     "cowboyhats:armoredgambler",
     "cowboyhats:derby",
@@ -9,6 +9,10 @@
     "cowboyhats:opencrown",
     "cowboyhats:armoredopencrown",
     "cowboyhats:comical",
-    "cowboyhats:armoredcomical"
+    "cowboyhats:armoredcomical",
+
+
+    "cowboyhats:traditionalboots",
+    "cowboyhats:armoredtraditionalboots"
   ]
 }
