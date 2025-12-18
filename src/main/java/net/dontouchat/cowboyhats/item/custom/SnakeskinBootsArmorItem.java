@@ -1,6 +1,7 @@
 package net.dontouchat.cowboyhats.item.custom;
 
-import net.dontouchat.cowboyhats.entity.armor.OpenCrownArmorRenderer;
+import net.dontouchat.cowboyhats.entity.armor.SlickBootsArmorRenderer;
+import net.dontouchat.cowboyhats.entity.armor.SnakeskinBootsArmorRenderer;
 import net.dontouchat.cowboyhats.item.ModItems;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -14,17 +15,17 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 import java.util.function.Consumer;
 
-public class OpenCrownArmorItem extends CowboyHatItem {
-    public OpenCrownArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
+public class SnakeskinBootsArmorItem extends CowboyBootItem {
+    public SnakeskinBootsArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
         super(pMaterial,slot,pProperties);
     }
 
     @Override
     public ItemLike getArmoredVariant(boolean value) {
         if(value){
-            return ModItems.ARMOREDOPENCROWN.get();
+            return ModItems.ARMOREDSNAKESKINBOOTS.get();
         }else{
-            return ModItems.OPENCROWN.get();
+            return ModItems.SNAKESKINBOOTS.get();
         }
     }
 
@@ -37,7 +38,7 @@ public class OpenCrownArmorItem extends CowboyHatItem {
             @Override
             public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
                 if (this.renderer == null)
-                    this.renderer = new OpenCrownArmorRenderer();
+                    this.renderer = new SnakeskinBootsArmorRenderer();
 
                 // This prepares our GeoArmorRenderer for the current render frame.
                 // These parameters may be null however, so we don't do anything further with them

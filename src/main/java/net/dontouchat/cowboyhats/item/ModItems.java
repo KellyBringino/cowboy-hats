@@ -45,6 +45,32 @@ public class ModItems {
     public static final RegistryObject<Item> ARMOREDCOMICAL = ITEMS.register("armoredcomical",
             () -> new ComicalArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
 
+
+    public static final RegistryObject<Item> TRADITIONALBOOTS = ITEMS.register("traditionalboots",
+            () -> new TraditionalBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDTRADITIONALBOOTS = ITEMS.register("armoredtraditionalboots",
+            () -> new TraditionalBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> BUCKAROOBOOTS = ITEMS.register("buckarooboots",
+            () -> new BuckarooBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDBUCKAROOBOOTS = ITEMS.register("armoredbuckarooboots",
+            () -> new BuckarooBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> SLICKBOOTS = ITEMS.register("slickboots",
+            () -> new SlickBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDSLICKBOOTS = ITEMS.register("armoredslickboots",
+            () -> new SlickBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> SNAKESKINBOOTS = ITEMS.register("snakeskinboots",
+            () -> new SnakeskinBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDSNAKESKINBOOTS = ITEMS.register("armoredsnakeskinboots",
+            () -> new SnakeskinBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> PLASTICBOOTS = ITEMS.register("plasticboots",
+            () -> new PlasticBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDPLASTICBOOTS = ITEMS.register("armoredplasticboots",
+            () -> new PlasticBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }

@@ -1,6 +1,7 @@
 package net.dontouchat.cowboyhats.screen;
 
 import net.dontouchat.cowboyhats.block.ModBlocks;
+import net.dontouchat.cowboyhats.item.custom.CowboyArmorItem;
 import net.dontouchat.cowboyhats.item.custom.CowboyHatItem;
 import net.dontouchat.cowboyhats.recipe.InfusionRecipe;
 import net.minecraft.network.FriendlyByteBuf;
@@ -62,15 +63,15 @@ public class InfusionMenu extends AbstractContainerMenu {
             }
             this.slots.get(i).setChanged();
         }
-        ItemStack hat = this.container.getItem(INPUT_SLOT);
+        ItemStack armor = this.container.getItem(INPUT_SLOT);
 
         if(recipe.getIsReroll())
         {
-            hat = ((CowboyHatItem)hat.getItem()).rerollEffects(hat);
+            armor = ((CowboyArmorItem)armor.getItem()).rerollEffects(armor);
         }else{
-            hat = ((CowboyHatItem)hat.getItem()).upgradeTier(hat);
+            armor = ((CowboyArmorItem)armor.getItem()).upgradeTier(armor);
         }
-        this.container.setItem(INPUT_SLOT,hat);
+        this.container.setItem(INPUT_SLOT,armor);
         this.slots.get(INPUT_SLOT).setChanged();
         this.container.setChanged();
     }

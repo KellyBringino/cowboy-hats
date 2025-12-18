@@ -1,5 +1,6 @@
 {
   "item.cowboyhats.leatherstrips": "Leather Strips",
+
   "item.cowboyhats.cattleman": "Cattleman Cowboy Hat",
   "item.cowboyhats.armoredcattleman": "Cattleman Cowboy Hat",
   "item.cowboyhats.gambler": "Gambler Cowboy Hat",
@@ -9,6 +10,17 @@
   "item.cowboyhats.opencrown": "Open Crown Cowboy Hat",
   "item.cowboyhats.armoredopencrown": "Open Crown Cowboy Hat",
   "item.cowboyhats.comical": "Comically Large Cowboy Hat",
+
+  "item.cowboyhats.traditionalboots": "Traditional Cowboy Boots",
+  "item.cowboyhats.armoredtraditionalboots": "Traditional Cowboy Boots",
+  "item.cowboyhats.buckarooboots": "Buckaroo Cowboy Boots",
+  "item.cowboyhats.armoredbuckarooboots": "Buckaroo Cowboy Boots",
+  "item.cowboyhats.slickboots": "Slick Cowboy Boots",
+  "item.cowboyhats.armoredslickboots": "Slick Cowboy Boots",
+  "item.cowboyhats.snakeskinboots": "Snakeskin Cowboy Boots",
+  "item.cowboyhats.armoredsnakeskinboots": "Snakeskin Cowboy Boots",
+  "item.cowboyhats.plasticboots": "Plastic Cowboy Boots",
+  "item.cowboyhats.armoredplasticboots": "Plastic Cowboy Boots",
 
   "block.cowboyhats.leatherworkingtable": "Leatherworking Table",
   "block.cowboyhats.infusiontable": "Infusion Table",

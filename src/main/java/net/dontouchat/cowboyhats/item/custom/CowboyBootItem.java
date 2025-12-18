@@ -17,6 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -27,65 +29,42 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 @Mod.EventBusSubscriber(modid = CowboyHatsMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class CowboyHatItem extends CowboyArmorItem {
+public class CowboyBootItem extends CowboyArmorItem {
     private Random random;
     private final float luckChance = 0.1f;
-    private final float pickpocketChance = 0.1f;
-    private Map<Item,Float> pickpocketItems = new HashMap();
+    private final float travelDist = 500.0f;
+    private final int travelEXP = 5;
     public enum CowboyEffect{
         LUCKY,
         ARMORED,
-        RELAXEDSLEEPER,
-        TOUGHRIDER,
-        PICKPOCKET,
-        BLOODTHIRSTY
+        TRAVELER,
+        FASTRIDER,
+        ESCAPERIDER,
+        SPRINGY
     }
     private Map<CowboyEffect,String[]> effectmap = new HashMap();
-    public CowboyHatItem(ArmorMaterial pMaterial, Type slot, Properties pProperties)
+    public CowboyBootItem(ArmorMaterial pMaterial, Type slot, Properties pProperties)
     {
         super(pMaterial,slot,pProperties);
 
-        this.pickpocketItems.put(Items.IRON_NUGGET,0.5f);
-        this.pickpocketItems.put(Items.GOLD_NUGGET,0.4f);
-        this.pickpocketItems.put(Items.EMERALD,0.095f);
-        this.pickpocketItems.put(Items.DIAMOND,0.005f);
-
         this.effectmap.put(CowboyEffect.LUCKY,new String[]{"lucky","Lucky"});
         this.effectmap.put(CowboyEffect.ARMORED,new String[]{"armored","Armored"});
-        this.effectmap.put(CowboyEffect.RELAXEDSLEEPER,new String[]{"relaxedsleeper","Relaxed Sleeper"});
-        this.effectmap.put(CowboyEffect.TOUGHRIDER,new String[]{"toughrider","Tough Rider"});
-        this.effectmap.put(CowboyEffect.PICKPOCKET,new String[]{"pickpocket","Pickpocket"});
-        this.effectmap.put(CowboyEffect.BLOODTHIRSTY,new String[]{"bloodthirsty","Bloodthirsty"});
+        this.effectmap.put(CowboyEffect.TRAVELER,new String[]{"traveler","Traveler"});
+        this.effectmap.put(CowboyEffect.FASTRIDER,new String[]{"fastrider","Fast Rider"});
+        this.effectmap.put(CowboyEffect.ESCAPERIDER,new String[]{"escaperider","Escape Rider"});
+        this.effectmap.put(CowboyEffect.SPRINGY,new String[]{"springy","Springy"});
         this.random = new Random(System.currentTimeMillis());
     }
     public boolean tryLuck(ItemStack pStack){
         return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.LUCKY)[0])
                 && random.nextFloat() <= luckChance;
     }
-    public boolean tryWakeupEffect(ItemStack pStack){
-        return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.RELAXEDSLEEPER)[0]);
+    public boolean tryTravel(ItemStack pStack){
+        return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.TRAVELER)[0]);
     }
-    public void tryPickpocket(ItemStack pStack, Player player){
-        if (pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.PICKPOCKET)[0])){
-            if(random.nextFloat() < pickpocketChance){
-                float itemChance = random.nextFloat();
-                float platform = 0.0f;
-                for(Item i : pickpocketItems.keySet()){
-                    if(itemChance <= pickpocketItems.get(i) + platform){
-                        player.addItem(new ItemStack(i));
-                        break;
-                    }else{
-                        platform += pickpocketItems.get(i);
-                    }
-                }
-            }
-        }
-    }
-    public void tryBloodthirst(ItemStack pStack, Player player){
-        if (pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.BLOODTHIRSTY)[0]))
-        {
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,80));
-        }
+    public boolean tryEscape(LivingEntity entity, ItemStack pStack){
+        return pStack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.ESCAPERIDER)[0]) &&
+                entity.isPassenger();
     }
     private CompoundTag NBTBase(CompoundTag NBT){
         NBT.putInt("cowboyhats.tier",0);
@@ -154,19 +133,22 @@ public class CowboyHatItem extends CowboyArmorItem {
     }
 
     public ItemLike getArmoredVariant(boolean value){
-        if(value){
-            return ModItems.ARMOREDCATTLEMAN.get();
-        }else{
-            return ModItems.CATTLEMAN.get();
-        }
+        return ModItems.TRADITIONALBOOTS.get();
     }
 
         @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
         super.onInventoryTick(stack, level, player, slotIndex, selectedIndex);
-        if(slotIndex == 39){
-            if(player.isPassenger() && stack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.TOUGHRIDER)[0])){
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,20));
+        if(slotIndex == 36){
+            if(player.isPassenger() && stack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.FASTRIDER)[0])){
+                Entity entity = player.getVehicle();
+                if(entity instanceof LivingEntity){
+                    ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20));
+                }
+            }
+
+            if(stack.getTag().getBoolean("cowboyhats." + effectmap.get(CowboyEffect.SPRINGY)[0])){
+                player.addEffect(new MobEffectInstance(MobEffects.JUMP,20));
             }
         }
     }
@@ -174,46 +156,46 @@ public class CowboyHatItem extends CowboyArmorItem {
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event){
         LivingEntity entity = event.getEntity();
-        ItemStack hat = entity.getItemBySlot(EquipmentSlot.HEAD);
-        if (!hat.isEmpty() && hat.getItem() instanceof CowboyHatItem)
+        ItemStack boot = entity.getItemBySlot(EquipmentSlot.FEET);
+        if (!boot.isEmpty() && boot.getItem() instanceof CowboyBootItem)
         {
-            if(((CowboyHatItem) hat.getItem()).tryLuck(hat)){
+            if(((CowboyBootItem) boot.getItem()).tryEscape(entity,boot)){
+                ((LivingEntity) entity.getVehicle()).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,200,2));
+            }
+
+            if(((CowboyBootItem) boot.getItem()).tryLuck(boot)){
                 event.setCanceled(true);
-                return;
             }
         }
 
-        Entity hurter = event.getSource().getEntity();
-        if(hurter instanceof Player && entity instanceof Monster) {
-            Player player = (Player) hurter;
-            hat = player.getItemBySlot(EquipmentSlot.HEAD);
-            ((CowboyHatItem) hat.getItem()).tryPickpocket(hat,player);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerWakeUp(PlayerWakeUpEvent event){
-        Player player = event.getEntity();
-        ItemStack hat = player.getItemBySlot(EquipmentSlot.HEAD);
-        if (!hat.isEmpty() && hat.getItem() instanceof CowboyHatItem)
-        {
-            if(((CowboyHatItem) hat.getItem()).tryWakeupEffect(hat)){
-                player.addEffect(new MobEffectInstance(MobEffects.SATURATION,20));
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,200));
+        if(entity.isVehicle()){
+            boot = ((LivingEntity) entity.getFirstPassenger()).getItemBySlot(EquipmentSlot.FEET);
+            if (!boot.isEmpty() && boot.getItem() instanceof CowboyBootItem){
+                if(((CowboyBootItem) boot.getItem()).tryEscape((LivingEntity) entity.getFirstPassenger(),boot)){
+                    entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,200,2));
+                }
             }
         }
     }
-
     @SubscribeEvent
-    public static void onLivingDeath(LivingDeathEvent event){
-        LivingEntity entity = event.getEntity();
-        Entity hurter = event.getSource().getEntity();
-        if(hurter instanceof Player){
-            Player player = (Player) hurter;
-            ItemStack hat = player.getItemBySlot(EquipmentSlot.HEAD);
-            if (!hat.isEmpty() && hat.getItem() instanceof CowboyHatItem)
-            {
-                ((CowboyHatItem) hat.getItem()).tryBloodthirst(hat,player);
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event){
+        Player player = event.player;
+        ItemStack boot = player.getItemBySlot(EquipmentSlot.FEET);
+        if(!boot.isEmpty() && boot.getItem() instanceof CowboyBootItem){
+            if(((CowboyBootItem) boot.getItem()).tryTravel(boot)){
+                float dist = boot.getTag().getFloat("cowboyhats.distance");
+                double deltaX = player.getX() - player.xOld;
+                double deltaY = player.getY() - player.yOld;
+                double deltaZ = player.getZ() - player.zOld;
+                double distMoved = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ));
+                dist += (float) distMoved;
+                if(dist >= ((CowboyBootItem) boot.getItem()).travelDist){
+                    player.giveExperiencePoints(((CowboyBootItem) boot.getItem()).travelEXP);
+                    dist = 0.0f;
+                }
+                CompoundTag tag = boot.getTag();
+                tag.putFloat("cowboyhats.distance",dist);
+                boot.setTag(tag);
             }
         }
     }

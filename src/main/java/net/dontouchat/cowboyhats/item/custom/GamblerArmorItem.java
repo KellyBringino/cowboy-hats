@@ -16,10 +16,7 @@ import java.util.function.Consumer;
 
 public class GamblerArmorItem extends CowboyHatItem {
     public GamblerArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties) {
-        super(pMaterial,slot,pProperties,1);
-    }
-    public GamblerArmorItem(ArmorMaterial pMaterial, Type slot, Properties pProperties,int tier) {
-        super(pMaterial,slot,pProperties,tier);
+        super(pMaterial,slot,pProperties);
     }
 
     @Override
