@@ -30,6 +30,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.BUCKAROOBOOTS.get());
                         pOutput.accept(ModItems.SLICKBOOTS.get());
                         pOutput.accept(ModItems.SNAKESKINBOOTS.get());
+                        pOutput.accept(ModItems.PLASTICBOOTS.get());
                     })
                     .build());
 
