@@ -4,8 +4,10 @@ import net.dontouchat.cowboyhats.CowboyHatsMod;
 import net.dontouchat.cowboyhats.item.custom.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,6 +21,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> LEATHERSTRIPS = ITEMS.register("leatherstrips",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SARSAPARILLA = ITEMS.register("sarsaparilla",
+            () -> new SarsaparillaItem((new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).food(ModFoods.SARSAPARILLA)));
 
     public static final RegistryObject<Item> CATTLEMAN = ITEMS.register("cattleman",
             () -> new CattlemanArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.HELMET, new Item.Properties()));
