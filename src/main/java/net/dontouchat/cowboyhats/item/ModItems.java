@@ -56,6 +56,11 @@ public class ModItems {
     public static final RegistryObject<Item> ARMOREDBUCKAROOBOOTS = ITEMS.register("armoredbuckarooboots",
             () -> new BuckarooBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> SLICKBOOTS = ITEMS.register("slickboots",
+            () -> new SlickBootsArmorItem(ModArmorMaterials.COWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> ARMOREDSLICKBOOTS = ITEMS.register("armoredslickboots",
+            () -> new SlickBootsArmorItem(ModArmorMaterials.ARMOREDCOWBOY,ArmorItem.Type.BOOTS, new Item.Properties()));
+
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }
