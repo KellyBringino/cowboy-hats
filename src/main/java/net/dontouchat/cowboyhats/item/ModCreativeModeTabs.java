@@ -15,17 +15,19 @@ public class ModCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CowboyHatsMod.MODID);
 
     public static final RegistryObject<CreativeModeTab> COWBOY_HAT_TAB = CREATIVE_MODE_TABS.register("cowboy_hat_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.LEATHERSTRIPS.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CATTLEMAN.get()))
                     .title(Component.translatable("creativetab.cowboy_hat_tab"))
                     .displayItems((pParameters, pOutput) ->{
                         pOutput.accept(ModBlocks.LEATHER_WORKING_TABLE.get());
                         pOutput.accept(ModBlocks.INFUSION_TABLE.get());
                         pOutput.accept(ModItems.LEATHERSTRIPS.get());
+                        pOutput.accept(ModItems.SARSAPARILLA.get());
                         pOutput.accept(ModItems.CATTLEMAN.get());
                         pOutput.accept(ModItems.GAMBLER.get());
                         pOutput.accept(ModItems.DERBY.get());
                         pOutput.accept(ModItems.OPENCROWN.get());
                         pOutput.accept(ModItems.COMICAL.get());
+                        pOutput.accept(ModItems.PLASTIC.get());
                         pOutput.accept(ModItems.TRADITIONALBOOTS.get());
                         pOutput.accept(ModItems.BUCKAROOBOOTS.get());
                         pOutput.accept(ModItems.SLICKBOOTS.get());
