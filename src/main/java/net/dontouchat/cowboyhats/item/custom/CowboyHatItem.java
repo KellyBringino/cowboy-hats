@@ -187,7 +187,9 @@ public class CowboyHatItem extends CowboyArmorItem {
         if(hurter instanceof Player && entity instanceof Monster) {
             Player player = (Player) hurter;
             hat = player.getItemBySlot(EquipmentSlot.HEAD);
-            ((CowboyHatItem) hat.getItem()).tryPickpocket(hat,player);
+            if(hat.getItem() instanceof CowboyHatItem) {
+                ((CowboyHatItem) hat.getItem()).tryPickpocket(hat,player);
+            }
         }
     }
 
