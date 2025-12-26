@@ -2,19 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "G": {
+    "g": {
       "item": "minecraft:gold_ingot"
     },
-    "L": {
+    "l": {
       "item": "minecraft:leather"
     },
-    "S": {
+    "s": {
       "item": "minecraft:chiseled_sandstone"
     }
   },
   "pattern": [
-    "GLG",
-    "SSS"
+    "glg",
+    "sss"
   ],
   "result": {
     "item": "cowboyhats:infusiontable"

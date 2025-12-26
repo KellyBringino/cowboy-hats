@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "W": {
+    "p": {
       "tag": "minecraft:planks"
     },
-    "C": {
+    "b": {
       "item": "minecraft:water_bucket"
     }
   },
   "pattern": [
-    "WCW",
-    "W W"
+    "pbp",
+    "p p"
   ],
   "result": {
     "item": "cowboyhats:leatherworkingtable"
