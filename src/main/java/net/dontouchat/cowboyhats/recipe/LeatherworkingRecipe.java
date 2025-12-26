@@ -124,12 +124,12 @@ public class LeatherworkingRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, LeatherworkingRecipe pRecipe) {
-            pBuffer.writeItemStack(pRecipe.getInputItem(), false);
+            pBuffer.writeItem(pRecipe.getInputItem());
 
-            pBuffer.writeItemStack(pRecipe.getExtraItem(), false);
+            pBuffer.writeItem(pRecipe.getExtraItem());
 
 
-            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
+            pBuffer.writeItem(pRecipe.output);
         }
     }
 }

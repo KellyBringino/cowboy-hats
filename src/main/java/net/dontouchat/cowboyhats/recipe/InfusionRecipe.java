@@ -118,7 +118,7 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
             for(int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(pBuffer));
             }
-            int tier = pBuffer.readVarInt();
+            int tier = pBuffer.readInt();
             boolean isReroll = pBuffer.readBoolean();
             return new InfusionRecipe(inputs, tier, pRecipeId,isReroll);
         }
@@ -130,7 +130,7 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
             for (Ingredient ingredient : pRecipe.getIngredients()) {
                 ingredient.toNetwork(pBuffer);
             }
-            pBuffer.writeVarInt(pRecipe.tier);
+            pBuffer.writeInt(pRecipe.tier);
             pBuffer.writeBoolean(pRecipe.isReroll);
         }
     }

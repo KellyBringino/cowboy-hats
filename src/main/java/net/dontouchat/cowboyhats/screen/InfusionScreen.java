@@ -11,17 +11,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class InfusionScreen extends AbstractContainerScreen<InfusionMenu> {
+    @SuppressWarnings("removal")
+    private static final ResourceLocation TEXTURE =
+            new ResourceLocation(CowboyHatsMod.MODID, "textures/gui/infusiontable_gui.png");
     private final int buttonX = 18;
     private final int buttonY = 18;
 
     private final int buttonPosX = 133;
     private final int buttonPosY = 44;
 
-    @SuppressWarnings("removal")
-    private static final ResourceLocation TEXTURE =
-            new ResourceLocation(CowboyHatsMod.MODID, "textures/gui/infusiontable_gui.png");
 
     public InfusionScreen(InfusionMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
