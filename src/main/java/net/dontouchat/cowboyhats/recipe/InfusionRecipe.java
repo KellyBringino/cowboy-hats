@@ -66,6 +66,11 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return inputItems;
+    }
+
+    @Override
     public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
         return ItemStack.EMPTY;
     }
@@ -113,25 +118,28 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public @Nullable InfusionRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
+            int tier = pBuffer.readInt();
+            boolean isReroll = pBuffer.readBoolean();
+
             NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(pBuffer));
             }
-            int tier = pBuffer.readInt();
-            boolean isReroll = pBuffer.readBoolean();
-            return new InfusionRecipe(inputs, tier, pRecipeId,isReroll);
+
+            return new InfusionRecipe(NonNullList.withSize(1,Ingredient.EMPTY), tier, pRecipeId,isReroll);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, InfusionRecipe pRecipe) {
+            pBuffer.writeInt(pRecipe.tier);
+            pBuffer.writeBoolean(pRecipe.isReroll);
+
             pBuffer.writeInt(pRecipe.inputItems.size());
 
             for (Ingredient ingredient : pRecipe.getIngredients()) {
                 ingredient.toNetwork(pBuffer);
             }
-            pBuffer.writeInt(pRecipe.tier);
-            pBuffer.writeBoolean(pRecipe.isReroll);
         }
     }
 }
