@@ -87,13 +87,13 @@ public class InfusionRecipe implements Recipe<SimpleContainer> {
 
     public static class Type implements RecipeType<InfusionRecipe> {
         public static final Type INSTANCE = new Type();
-        public static final String ID = "inf";
+        public static final String ID = "infusion";
     }
 
     public static class Serializer implements RecipeSerializer<InfusionRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         @SuppressWarnings("removal")
-        public static final ResourceLocation ID = new ResourceLocation(CowboyHatsMod.MODID, "inf");
+        public static final ResourceLocation ID = new ResourceLocation(CowboyHatsMod.MODID, "infusion");
 
         @Override
         public InfusionRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
